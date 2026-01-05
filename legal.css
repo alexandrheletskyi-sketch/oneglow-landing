@@ -22,7 +22,8 @@ body{
 .wrap{
   max-width:var(--max);
   margin:0 auto;
-  padding:0 24px;
+  padding-left:calc(24px + env(safe-area-inset-left));
+  padding-right:calc(24px + env(safe-area-inset-right));
 }
 
 /* header */
@@ -124,22 +125,25 @@ li{
 
 /* mobile */
 @media (max-width:600px){
-  /* рівно як контент, без "прибиття до краю" */
-  .wrap{ padding:0 18px; }
+  /* однаковий відступ для лого і контенту + safe-area */
+  .wrap{
+    padding-left:calc(18px + env(safe-area-inset-left));
+    padding-right:calc(18px + env(safe-area-inset-right));
+  }
 
-  /* більше повітря зверху і без сірої лінії після лого */
+  /* більше повітря зверху, без лінії */
   .header{
     border-bottom:0;
-    padding-top:10px;
+    padding-top:12px;
   }
   .header-inner{
     padding:8px 0 6px;
   }
 
-  /* логотип менший */
-  .brand img{ height:18px; }
+  /* лого менше */
+  .brand img{ height:17px; }
 
-  /* контент акуратніше */
+  /* контент */
   .main{ padding:22px 0 72px; }
 
   /* типографіка */
