@@ -14,6 +14,7 @@ body{
   color:var(--text);
   background:#fff;
   -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
   text-rendering:geometricPrecision;
   line-height:1.65;
 }
@@ -40,6 +41,7 @@ body{
 .brand a{
   display:inline-flex;
   align-items:center;
+  gap:10px;
   color:inherit;
   text-decoration:none;
 }
@@ -50,7 +52,6 @@ body{
   display:block;
   object-fit:contain;
 }
-
 
 /* content */
 .main{ padding:44px 0 84px; }
@@ -77,17 +78,27 @@ h2{
   font-weight:700;
 }
 
-p{ margin:0 0 16px; font-size:17px; }
+p{
+  margin:0 0 16px;
+  font-size:17px;
+}
 
-ul{ margin:10px 0 18px; padding-left:20px; }
-li{ margin:0 0 8px; font-size:17px; }
+ul{
+  margin:10px 0 18px;
+  padding-left:20px;
+}
+
+li{
+  margin:0 0 8px;
+  font-size:17px;
+}
 
 /* links in content */
-main a{
+.main a{
   color:var(--link);
   text-decoration:none;
 }
-main a:hover{ text-decoration:underline; }
+.main a:hover{ text-decoration:underline; }
 
 /* footer */
 .footer{
@@ -105,27 +116,30 @@ main a:hover{ text-decoration:underline; }
   flex-wrap:wrap;
 }
 
-.footer a{ color:inherit; text-decoration:none; }
+.footer a{
+  color:inherit;
+  text-decoration:none;
+}
 .footer a:hover{ text-decoration:underline; }
 
 /* mobile */
 @media (max-width:600px){
-  /* трохи ширше і акуратніше */
+  /* рівно як контент, без "прибиття до краю" */
   .wrap{ padding:0 18px; }
 
-  /* хедер: більше повітря зверху, без сірої лінії */
+  /* більше повітря зверху і без сірої лінії після лого */
   .header{
     border-bottom:0;
-    padding-top:6px;
+    padding-top:10px;
   }
   .header-inner{
-    padding:10px 0 8px;
+    padding:8px 0 6px;
   }
 
-  /* логотип менший на мобайлі */
-  .brand img{ height:20px; }
+  /* логотип менший */
+  .brand img{ height:18px; }
 
-  /* контент: м’якші відступи */
+  /* контент акуратніше */
   .main{ padding:22px 0 72px; }
 
   /* типографіка */
