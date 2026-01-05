@@ -3,11 +3,10 @@
   --muted: #6e6e73;
   --line: #e5e5e7;
   --link: #0066cc;
+  --max: 980px;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 html, body {
   margin: 0;
@@ -20,30 +19,48 @@ body {
   color: var(--text);
   background: #ffffff;
   -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
 }
 
 /* top simple header */
 .header {
   border-bottom: 1px solid var(--line);
+  background: #fff;
 }
 
 .header-inner {
-  max-width: 980px;
+  max-width: var(--max);
   margin: 0 auto;
   padding: 18px 24px;
   display: flex;
   align-items: center;
+  gap: 12px;
 }
 
 .brand {
-  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.brand-logo {
+  height: 22px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.brand-name {
+  font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
 /* content */
 .container {
-  max-width: 980px;
+  max-width: var(--max);
   margin: 0 auto;
   padding: 48px 24px 96px;
 }
@@ -53,21 +70,20 @@ h1 {
   line-height: 1.1;
   letter-spacing: -0.03em;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin: 0 0 12px;
 }
 
 .updated {
   color: var(--muted);
   font-size: 15px;
-  margin-bottom: 40px;
+  margin: 0 0 40px;
 }
 
 h2 {
   font-size: 22px;
   line-height: 1.3;
   font-weight: 600;
-  margin-top: 48px;
-  margin-bottom: 12px;
+  margin: 48px 0 12px;
 }
 
 p {
@@ -92,17 +108,16 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
-}
+a:hover { text-decoration: underline; }
 
 /* footer */
 .footer {
   border-top: 1px solid var(--line);
+  background: #fff;
 }
 
 .footer-inner {
-  max-width: 980px;
+  max-width: var(--max);
   margin: 0 auto;
   padding: 24px;
   font-size: 14px;
@@ -111,11 +126,9 @@ a:hover {
 
 /* mobile tweaks */
 @media (max-width: 600px) {
-  h1 {
-    font-size: 32px;
-  }
-
-  .container {
-    padding-top: 32px;
-  }
+  .header-inner { padding: 16px 18px; }
+  .container { padding: 32px 18px 72px; }
+  h1 { font-size: 32px; }
+  .brand-logo { height: 20px; }
+  .brand-name { font-size: 17px; }
 }
