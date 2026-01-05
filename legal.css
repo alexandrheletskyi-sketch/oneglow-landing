@@ -26,8 +26,8 @@ body{
 
 /* header */
 .header{
-  border-bottom:1px solid var(--line);
   background:#fff;
+  border-bottom:1px solid var(--line);
 }
 
 .header-inner{
@@ -44,15 +44,13 @@ body{
   text-decoration:none;
 }
 
-.brand a:visited{ color:inherit; }
-.brand a:hover{ text-decoration:none; opacity:.92; }
-
 .brand img{
   height:26px;
   width:auto;
   display:block;
   object-fit:contain;
 }
+
 
 /* content */
 .main{ padding:44px 0 84px; }
@@ -112,10 +110,26 @@ main a:hover{ text-decoration:underline; }
 
 /* mobile */
 @media (max-width:600px){
+  /* трохи ширше і акуратніше */
   .wrap{ padding:0 18px; }
-  .main{ padding:30px 0 72px; }
-  h1{ font-size:30px; }
+
+  /* хедер: більше повітря зверху, без сірої лінії */
+  .header{
+    border-bottom:0;
+    padding-top:6px;
+  }
+  .header-inner{
+    padding:10px 0 8px;
+  }
+
+  /* логотип менший на мобайлі */
+  .brand img{ height:20px; }
+
+  /* контент: м’якші відступи */
+  .main{ padding:22px 0 72px; }
+
+  /* типографіка */
+  h1{ font-size:30px; line-height:1.08; }
   h2{ font-size:20px; margin-top:34px; }
-  p,li{ font-size:16px; }
-  .brand img{ height:24px; }
+  p,li{ font-size:16px; line-height:1.65; }
 }
