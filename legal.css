@@ -6,6 +6,8 @@
   --max:980px;
 }
 
+/* ---------- base ---------- */
+
 *{ box-sizing:border-box; }
 html,body{ margin:0; padding:0; }
 
@@ -29,7 +31,8 @@ body{
 }
 
 /* ---------- header ---------- */
-/* header існує лише як контейнер, без вертикального впливу */
+/* header існує лише для логотипу
+   базова лінія лого = базова лінія h1 */
 
 .header{
   background:#fff;
@@ -38,7 +41,7 @@ body{
 .header-inner{
   height:56px;
   display:flex;
-  align-items:flex-end; /* ключове */
+  align-items:flex-end;
 }
 
 .brand a{
@@ -54,15 +57,15 @@ body{
   display:block;
 }
 
-/* ---------- content ---------- */
+/* ---------- main ---------- */
+/* тут створюємо повітря між лого і заголовком */
 
 .main{
+  padding-top:14px;     /* ключовий відступ */
   padding-bottom:84px;
 }
 
-.main-start{
-  padding-top:0; /* немає розриву між лого і h1 */
-}
+/* ---------- typography ---------- */
 
 h1{
   font-size:40px;
@@ -107,6 +110,7 @@ li{
   color:var(--link);
   text-decoration:none;
 }
+
 .main a:hover{
   text-decoration:underline;
 }
@@ -132,6 +136,7 @@ li{
   color:inherit;
   text-decoration:none;
 }
+
 .footer a:hover{
   text-decoration:underline;
 }
@@ -153,6 +158,11 @@ li{
     height:16px;
   }
 
+  .main{
+    padding-top:12px;
+    padding-bottom:72px;
+  }
+
   h1{
     font-size:30px;
   }
@@ -162,11 +172,8 @@ li{
     margin-top:34px;
   }
 
-  p, li{
+  p,
+  li{
     font-size:16px;
-  }
-
-  .main{
-    padding-bottom:72px;
   }
 }
