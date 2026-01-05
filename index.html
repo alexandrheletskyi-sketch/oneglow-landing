@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>OneGlow — простір для бʼюті майстрів</title>
+  <title>OneGlow — простір який працює на вас</title>
   <meta name="description" content="OneGlow — преміум простір для бʼюті майстрів: профіль, послуги, ціни, фото і запис" />
   <meta name="theme-color" content="#ffffff" />
 
@@ -11,121 +11,140 @@
     :root{
       --bg: #ffffff;
       --text: #0B0F14;
-      --muted: rgba(11,15,20,.60);
+      --muted: rgba(11,15,20,.62);
+      --muted2: rgba(11,15,20,.46);
       --line: rgba(11,15,20,.10);
       --line2: rgba(11,15,20,.08);
-      --card: rgba(255,255,255,.72);
-      --shadow: 0 28px 70px rgba(11,15,20,.12);
-      --shadowSoft: 0 12px 28px rgba(11,15,20,.08);
-      --r: 26px;
-      --container: 1120px;
 
-      /* OneGlow vibe */
-      --pink: rgba(255, 92, 156, .34);
-      --purple: rgba(120, 92, 255, .26);
-      --teal: rgba(45, 212, 191, .18);
-      --amber: rgba(255, 190, 110, .22);
+      --shadow1: 0 18px 40px rgba(11,15,20,.10);
+      --shadow2: 0 10px 24px rgba(11,15,20,.08);
+
+      --r1: 18px;
+      --r2: 999px;
+
+      --wrap: 1120px;
+
+      /* OneGlow aura */
+      --pink: rgba(255, 92, 156, .32);
+      --purple: rgba(120, 92, 255, .24);
+      --teal: rgba(45, 212, 191, .16);
+      --amber: rgba(255, 190, 110, .20);
     }
 
     *{ box-sizing: border-box; }
-    html,body{ height:100%; }
+    html, body{ height: 100%; }
     body{
-      margin:0;
+      margin: 0;
       font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial;
       color: var(--text);
       background: var(--bg);
-      overflow-x:hidden;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: geometricPrecision;
     }
-    a{ color:inherit; text-decoration:none; }
+
+    a{ color: inherit; text-decoration: none; }
     button{ font-family: inherit; }
 
-    /* Aura-like soft background */
+    /* Fullscreen Aura-like background */
     .bg{
       position: fixed;
-      inset:-140px;
-      pointer-events:none;
-      z-index:-1;
+      inset: -220px;
+      pointer-events: none;
+      z-index: -1;
       background:
-        radial-gradient(720px 720px at 10% 78%, var(--amber), rgba(255,255,255,0) 62%),
-        radial-gradient(760px 760px at 92% 38%, var(--pink), rgba(255,255,255,0) 60%),
-        radial-gradient(760px 760px at 92% 72%, var(--purple), rgba(255,255,255,0) 62%),
-        radial-gradient(820px 820px at 12% 28%, var(--teal), rgba(255,255,255,0) 62%);
-      filter: blur(10px);
+        radial-gradient(900px 900px at 10% 78%, var(--amber), rgba(255,255,255,0) 62%),
+        radial-gradient(920px 920px at 92% 35%, var(--pink), rgba(255,255,255,0) 60%),
+        radial-gradient(980px 980px at 92% 78%, var(--purple), rgba(255,255,255,0) 62%),
+        radial-gradient(980px 980px at 12% 22%, var(--teal), rgba(255,255,255,0) 62%);
+      filter: blur(14px);
       opacity: .95;
     }
 
-    .page{
-      padding: 30px 18px 46px;
-      display:flex;
-      justify-content:center;
+    /* Very subtle grain to avoid banding */
+    .grain{
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background:
+        repeating-linear-gradient(0deg, rgba(0,0,0,.012), rgba(0,0,0,.012) 1px, rgba(255,255,255,0) 2px, rgba(255,255,255,0) 5px),
+        repeating-linear-gradient(90deg, rgba(0,0,0,.010), rgba(0,0,0,.010) 1px, rgba(255,255,255,0) 2px, rgba(255,255,255,0) 6px);
+      mix-blend-mode: soft-light;
+      opacity: .35;
     }
 
-    .shell{
-      width: min(var(--container), 100%);
-      border: 1px solid var(--line2);
-      border-radius: var(--r);
-      background: rgba(255,255,255,.70);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      backdrop-filter: blur(10px);
+    .wrap{
+      width: min(var(--wrap), calc(100% - 44px));
+      margin: 0 auto;
     }
 
-    /* top bar */
+    /* Header */
+    .header{
+      padding: 18px 0;
+    }
+
     .top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 14px;
-      padding: 18px 22px;
     }
 
     .brand{
-      display:flex;
-      align-items:center;
+      display: inline-flex;
+      align-items: center;
       gap: 10px;
       font-weight: 760;
       letter-spacing: -0.02em;
+      user-select: none;
     }
+
     .brand img{
       width: 30px;
       height: 30px;
       border-radius: 10px;
       object-fit: cover;
-      box-shadow: 0 10px 22px rgba(11,15,20,.10);
+      box-shadow: 0 12px 22px rgba(11,15,20,.10);
     }
-    .brand .name{ font-size: 15px; }
+
+    .brand .name{
+      font-size: 15px;
+    }
 
     .nav{
-      display:flex;
-      align-items:center;
+      display: flex;
+      align-items: center;
       gap: 18px;
       color: rgba(11,15,20,.62);
       font-weight: 650;
       font-size: 14px;
     }
+
     .nav a{
       padding: 8px 10px;
-      border-radius: 999px;
+      border-radius: var(--r2);
     }
     .nav a:hover{
       background: rgba(11,15,20,.05);
-      color: rgba(11,15,20,.80);
+      color: rgba(11,15,20,.78);
     }
 
     .actions{
-      display:flex;
+      display: flex;
+      align-items: center;
       gap: 10px;
-      align-items:center;
     }
 
     .btn{
       height: 40px;
       padding: 0 14px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       gap: 10px;
-      border-radius: 999px;
+      border-radius: var(--r2);
       border: 1px solid rgba(11,15,20,.12);
       background: rgba(255,255,255,.78);
       box-shadow: 0 10px 20px rgba(11,15,20,.06);
@@ -133,7 +152,8 @@
       font-size: 14px;
       letter-spacing: -0.01em;
       transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease;
-      user-select:none;
+      user-select: none;
+      backdrop-filter: blur(10px);
     }
     .btn:hover{
       transform: translateY(-1px);
@@ -149,149 +169,163 @@
     .btn.primary:hover{
       box-shadow: 0 18px 40px rgba(11,15,20,.22);
     }
+
     .icon{
       width: 18px;
       height: 18px;
       opacity: .95;
     }
 
-    /* hero */
+    /* Hero */
     .hero{
-      padding: 70px 22px 18px;
-      text-align:center;
+      padding: 70px 0 20px;
+      text-align: center;
     }
 
     .pill{
-      display:inline-flex;
-      align-items:center;
+      display: inline-flex;
+      align-items: center;
       gap: 10px;
       padding: 7px 12px;
-      border-radius: 999px;
+      border-radius: var(--r2);
       border: 1px solid rgba(11,15,20,.10);
-      background: rgba(255,255,255,.72);
-      color: rgba(11,15,20,.70);
+      background: rgba(255,255,255,.70);
+      color: rgba(11,15,20,.68);
       font-weight: 720;
       font-size: 13px;
       letter-spacing: -0.01em;
+      backdrop-filter: blur(10px);
     }
+
     .dot{
       width: 8px;
       height: 8px;
-      border-radius: 999px;
+      border-radius: var(--r2);
       background: linear-gradient(135deg, rgba(255,92,156,.95), rgba(120,92,255,.95));
-      box-shadow: 0 10px 18px rgba(255,92,156,.20);
+      box-shadow: 0 10px 18px rgba(255,92,156,.18);
     }
 
     h1{
       margin: 18px auto 10px;
-      max-width: 920px;
-      font-size: clamp(42px, 5.2vw, 70px);
+      max-width: 980px;
+      font-size: clamp(44px, 5.4vw, 74px);
       line-height: 1.02;
-      letter-spacing: -0.045em;
+      letter-spacing: -0.05em;
+      font-weight: 820;
     }
 
     .accent{
       background: linear-gradient(90deg, rgba(255,92,156,1), rgba(120,92,255,1));
-      -webkit-background-clip:text;
-      background-clip:text;
+      -webkit-background-clip: text;
+      background-clip: text;
       color: transparent;
     }
 
     .sub{
       margin: 0 auto;
-      max-width: 760px;
+      max-width: 780px;
       color: var(--muted);
       font-weight: 650;
       font-size: clamp(15px, 2.0vw, 18px);
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     .cta{
       margin-top: 22px;
-      display:flex;
-      justify-content:center;
+      display: flex;
+      justify-content: center;
       gap: 12px;
       flex-wrap: wrap;
     }
 
     .micro{
       margin-top: 10px;
-      color: rgba(11,15,20,.45);
+      color: rgba(11,15,20,.44);
       font-weight: 650;
       font-size: 13px;
     }
 
-    /* social proof row like Aura */
+    /* Proof row */
     .proof{
-      padding: 26px 22px 34px;
-      text-align:center;
-      color: rgba(11,15,20,.45);
+      padding: 26px 0 34px;
+      text-align: center;
+      color: rgba(11,15,20,.42);
       font-weight: 700;
       font-size: 13px;
     }
+
     .logos{
       margin-top: 12px;
-      display:flex;
-      justify-content:center;
-      gap: 22px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
       flex-wrap: wrap;
-      opacity: .70;
+      opacity: .68;
       filter: grayscale(1);
     }
+
     .logoText{
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
-      padding: 8px 12px;
-      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 12px;
+      border-radius: var(--r2);
       border: 1px solid rgba(11,15,20,.08);
       background: rgba(255,255,255,.55);
       font-weight: 800;
       font-size: 13px;
       color: rgba(11,15,20,.55);
+      backdrop-filter: blur(10px);
     }
 
-    /* features minimal */
+    /* Features */
+    .features{
+      padding: 18px 0 28px;
+    }
+
     .grid{
-      padding: 0 22px 18px;
-      display:grid;
+      display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 14px;
     }
+
     .card{
       grid-column: span 4;
-      text-align:left;
-      border-radius: 22px;
+      border-radius: 20px;
       border: 1px solid rgba(11,15,20,.10);
-      background: rgba(255,255,255,.70);
-      box-shadow: var(--shadowSoft);
+      background: rgba(255,255,255,.72);
+      box-shadow: var(--shadow2);
       padding: 16px 16px 14px;
       backdrop-filter: blur(10px);
     }
+
     .tag{
-      display:inline-flex;
-      align-items:center;
+      display: inline-flex;
+      align-items: center;
       gap: 8px;
       font-weight: 820;
       letter-spacing: -0.01em;
       color: rgba(11,15,20,.74);
       font-size: 12.5px;
     }
+
     .mini{
       width: 26px;
       height: 26px;
       border-radius: 10px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       border: 1px solid rgba(11,15,20,.10);
       background: rgba(255,255,255,.70);
     }
+
     .card h3{
       margin: 10px 0 6px;
       font-size: 16px;
       letter-spacing: -0.02em;
+      font-weight: 800;
     }
+
     .card p{
       margin: 0;
       color: rgba(11,15,20,.58);
@@ -300,43 +334,50 @@
       font-size: 14px;
     }
 
+    /* Footer */
     .footer{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap: 12px;
-      padding: 18px 22px 22px;
+      padding: 18px 0 28px;
       border-top: 1px solid rgba(11,15,20,.08);
       color: rgba(11,15,20,.55);
       font-weight: 650;
       font-size: 13px;
+      backdrop-filter: blur(10px);
     }
+
+    .footerRow{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
     .footer a{ color: rgba(11,15,20,.58); }
     .footer a:hover{ color: rgba(11,15,20,.80); }
 
+    /* Small screens */
     @media (max-width: 920px){
-      .nav{ display:none; }
+      .nav{ display: none; }
       .card{ grid-column: span 6; }
-      .hero{ padding-top: 62px; }
+      .hero{ padding-top: 60px; }
     }
+
     @media (max-width: 560px){
-      .top{ padding: 16px 16px; }
-      .hero{ padding: 56px 16px 12px; }
-      .grid{ padding: 0 16px 16px; }
-      .proof{ padding: 22px 16px 28px; }
+      .wrap{ width: min(var(--wrap), calc(100% - 32px)); }
+      .hero{ padding-top: 52px; }
       .card{ grid-column: span 12; }
-      .footer{ padding: 16px 16px 18px; flex-direction: column; }
+      .footerRow{ justify-content: center; }
     }
   </style>
 </head>
 
 <body>
   <div class="bg" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
 
-  <div class="page">
-    <div class="shell">
-
-      <header class="top">
+  <header class="header">
+    <div class="wrap">
+      <div class="top">
         <a class="brand" href="#top" aria-label="OneGlow">
           <img src="/OneGlow.png" alt="OneGlow" onerror="this.style.display='none'" />
           <span class="name">OneGlow</span>
@@ -352,9 +393,13 @@
           <a class="btn" href="#download">Перейти в додаток</a>
           <a class="btn primary" href="#download">Завантажити</a>
         </div>
-      </header>
+      </div>
+    </div>
+  </header>
 
-      <main id="top" class="hero">
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
         <div class="pill">
           <span class="dot" aria-hidden="true"></span>
           <span>Преміум простір для бʼюті майстрів</span>
@@ -369,7 +414,7 @@
         <p class="sub">
           Профіль, послуги, ціни, фото і запис клієнтів в одному місці
           <br />
-          Преміально виглядає, швидко налаштовується, миттєво відкривається
+          Виглядає преміально, налаштовується за хвилини, відкривається миттєво
         </p>
 
         <div class="cta" id="download">
@@ -396,9 +441,11 @@
         <div class="micro">
           посилання на магазини заміниш пізніше в двох рядках в коді
         </div>
-      </main>
+      </div>
+    </section>
 
-      <section class="proof" aria-label="Соціальний доказ">
+    <section class="proof" aria-label="Соціальний доказ">
+      <div class="wrap">
         Використовують підхід який люблять користувачі топ продуктів
         <div class="logos" aria-hidden="true">
           <span class="logoText">Framer</span>
@@ -406,72 +453,77 @@
           <span class="logoText">Canva</span>
           <span class="logoText">Figma</span>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="features" class="grid" aria-label="Можливості">
-        <article class="card">
-          <div class="tag"><span class="mini">✨</span>Преміум профіль</div>
-          <h3>Сторінка майстра яка виглядає дорого</h3>
-          <p>Послуги, ціни, фото, контакти і кнопка запису в одному місці</p>
-        </article>
+    <section id="features" class="features" aria-label="Можливості">
+      <div class="wrap">
+        <div class="grid">
+          <article class="card">
+            <div class="tag"><span class="mini">✨</span>Преміум профіль</div>
+            <h3>Сторінка майстра яка виглядає дорого</h3>
+            <p>Послуги, ціни, фото, контакти і кнопка запису в одному місці</p>
+          </article>
 
-        <article class="card">
-          <div class="tag"><span class="mini">📅</span>Запис клієнтів</div>
-          <h3>Швидко і без зайвих переписок</h3>
-          <p>Клієнт бачить пропозицію, обирає час і приходить</p>
-        </article>
+          <article class="card">
+            <div class="tag"><span class="mini">📅</span>Запис клієнтів</div>
+            <h3>Швидко і без зайвих переписок</h3>
+            <p>Клієнт бачить пропозицію, обирає час і приходить</p>
+          </article>
 
-        <article class="card">
-          <div class="tag"><span class="mini">🔗</span>Лінк в біо</div>
-          <h3>Один лінк замість десяти</h3>
-          <p>Ставиш в Instagram і ведеш клієнта в правильний сценарій</p>
-        </article>
+          <article class="card">
+            <div class="tag"><span class="mini">🔗</span>Лінк в біо</div>
+            <h3>Один лінк замість десяти</h3>
+            <p>Ставиш в Instagram і ведеш клієнта в правильний сценарій</p>
+          </article>
 
-        <article class="card">
-          <div class="tag"><span class="mini">⚡️</span>Миттєво</div>
-          <h3>Швидко відкривається на будь якому телефоні</h3>
-          <p>CDN, мінімум ваги, максимум відчуття якості</p>
-        </article>
+          <article class="card">
+            <div class="tag"><span class="mini">⚡️</span>Миттєво</div>
+            <h3>Швидко відкривається на будь якому телефоні</h3>
+            <p>CDN, мінімум ваги, максимум відчуття якості</p>
+          </article>
 
-        <article class="card">
-          <div class="tag"><span class="mini">🎨</span>Стиль</div>
-          <h3>Apple like UI без кітчу</h3>
-          <p>Чисто, сучасно, з мʼяким градієнтом і правильною типографікою</p>
-        </article>
+          <article class="card">
+            <div class="tag"><span class="mini">🎨</span>Стиль</div>
+            <h3>Apple like UI без кітчу</h3>
+            <p>Чисто, сучасно, з мʼяким градієнтом і правильною типографікою</p>
+          </article>
 
-        <article class="card" id="how">
-          <div class="tag"><span class="mini">🧩</span>Як працює</div>
-          <h3>Створив профіль і вже можна вести трафік</h3>
-          <p>Далі додаси App Store і Google Play посилання і все буде як треба</p>
-        </article>
-      </section>
-
-      <footer class="footer">
-        <div>© <span id="y"></span> OneGlow</div>
-        <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
-          <a href="/privacy.html">Політика</a>
-          <a href="/terms.html">Умови</a>
-          <a href="mailto:hello@oneglow.app">hello@oneglow.app</a>
+          <article class="card" id="how">
+            <div class="tag"><span class="mini">🧩</span>Як працює</div>
+            <h3>Створив профіль і вже можна вести трафік</h3>
+            <p>Далі додаси App Store і Google Play посилання і все буде як треба</p>
+          </article>
         </div>
-      </footer>
+      </div>
+    </section>
 
-    </div>
-  </div>
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footerRow">
+          <div>© <span id="y"></span> OneGlow</div>
+          <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
+            <a href="/privacy.html">Політика</a>
+            <a href="/terms.html">Умови</a>
+            <a href="mailto:hello@oneglow.app">hello@oneglow.app</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
 
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
+    document.getElementById("y").textContent = new Date().getFullYear()
 
-    // optional: avoid navigating while links are placeholders
-    const placeholders = ["https://example.com/appstore", "https://example.com/googleplay"];
-    document.querySelectorAll('a[data-store]').forEach(a => {
+    const placeholders = ["https://example.com/appstore", "https://example.com/googleplay"]
+    document.querySelectorAll("a[data-store]").forEach(a => {
       if (placeholders.includes(a.href)) {
         a.addEventListener("click", (e) => {
-          e.preventDefault();
-          alert("Тут буде посилання на магазин, заміниш пізніше в index.html");
-        });
+          e.preventDefault()
+          alert("Тут буде посилання на магазин, заміниш пізніше в index.html")
+        })
       }
-    });
+    })
   </script>
 </body>
 </html>
-
