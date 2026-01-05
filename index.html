@@ -176,17 +176,16 @@
       opacity: .95;
     }
 
-    .storeIcon{
+    /* Store icons (SVG files) */
+.storeIcon{
   width: 18px;
   height: 18px;
   display: block;
-  flex: 0 0 18px;
 }
 
-/* якщо Apple.svg чорний, а кнопка темна -> зробимо білим */
-.btn.primary .storeIcon{
-  filter: invert(1);
-  opacity: .98;
+/* If SVG is monochrome black, make it white on dark button */
+.btn.primary .storeIcon.mono{
+  filter: brightness(0) invert(1);
 }
 
     /* Hero */
@@ -431,18 +430,18 @@
         </p>
 
         <div class="cta" id="download">
-          <!-- TODO: replace links later -->
-          <a class="btn primary" href="https://example.com/appstore" data-store="appstore" aria-label="App Store">
-  <img class="storeIcon" src="/Apple.svg" alt="" aria-hidden="true" />
-  App Store
-</a>
+  <!-- TODO: replace links later -->
+  <a class="btn primary" href="https://example.com/appstore" data-store="appstore" aria-label="App Store">
+    <img class="storeIcon mono" src="/Apple.svg" alt="" aria-hidden="true" />
+    App Store
+  </a>
 
-<a class="btn" href="https://example.com/googleplay" data-store="googleplay" aria-label="Google Play">
-  <img class="storeIcon" src="/Google%20Play.svg" alt="" aria-hidden="true" />
-  Google Play
-</a>
+  <a class="btn" href="https://example.com/googleplay" data-store="googleplay" aria-label="Google Play">
+    <img class="storeIcon" src="/Google%20Play.svg" alt="" aria-hidden="true" />
+    Google Play
+  </a>
+</div>
 
-        </div>
 
         <div class="micro">
           посилання на магазини заміниш пізніше в двох рядках в коді
